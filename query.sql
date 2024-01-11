@@ -1,10 +1,12 @@
 USE phd_papers;
 
+/* Table containing the department names and their associated department Numbers, which is unique for each dept */
 CREATE TABLE department(
 	dname VARCHAR(30),
 	dno INT PRIMARY KEY
 );
 
+/* Table containing the details of the students, who have a unique University Serial Number (USN) */
 CREATE TABLE student (
     name VARCHAR(20),
     usn VARCHAR(12) PRIMARY KEY,
@@ -41,18 +43,7 @@ CREATE TABLE writes(
     FOREIGN KEY(paper_id) REFERENCES research_papers(paper_id) ON DELETE CASCADE
 );
 
-DROP TABLE writes;
-
-/* DELIMITER $
-CREATE TRIGGER after_insert_research_paper
-AFTER INSERT ON research_papers FOR EACH ROW
-BEGIN
-    INSERT INTO writes VALUES(usn, paper_id);
-END $
-DELIMITER ;
-*/
-
-SELECT * FROM writes;
+/* Inserting sample values */
 
 INSERT INTO department VALUES('CCE', 1);
 INSERT INTO department VALUES('CSE', 2);
