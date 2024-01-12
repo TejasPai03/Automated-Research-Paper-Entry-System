@@ -72,5 +72,4 @@ INSERT INTO is_captain VALUES('4nm21ai001', 4);
 INSERT INTO is_captain VALUES('4nm21ec001', 5);
 INSERT INTO is_captain VALUES('4nm21ee001', 6);
 
-SELECT * FROM research_papers
-WHERE usn = '4nm21cm001';
+
