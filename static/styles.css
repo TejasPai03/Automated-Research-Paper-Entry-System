@@ -32,6 +32,12 @@ th {
     background-color: #f2f2f2;
 }
 
+form {
+    width: 100%;
+    height: 100%;
+    
+}
+
 .viewbutton{
     display: inline-block;
     margin: 0 auto;
