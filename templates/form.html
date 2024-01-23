@@ -1,72 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles.css">
-    <title>Automated Research Paper Entry System</title>
-</head>
+{% block body %}
 
-<body>
-    <div>
-        <main>
-            <h1>Automated Research Paper Entry System</h1>
-            <div>
-                <form action="/submit" method="post" autocomplete="off">
-                            <label>
-                                <label for="usn"> USN:</label>
-                                <input type="text" id="usn" name="usn" required>
-                            </label>
+<h1>Automated Research Paper Entry System</h1>
+    <form action="/submit" method="post" autocomplete="off">
+        <label>
+            <label for="usn"> USN:</label>
+            <input type="text" id="usn" name="usn" required>
+        </label>
 
-                            <label>
-                                <label for="paperid"> Paper ID:</label>
-                                <input type="text" id="paperid" name="paperid" required>
-                            </label>
+        <label>
+            <label for="paperid"> Paper ID:</label>
+            <input type="text" id="paperid" name="paperid" required>
+        </label>
 
-                            <label>
-                                <label for="title"> Title:</label>
-                                <input type="text" id="title" name="title" required>
-                            </label>
+        <label>
+            <label for="title"> Title:</label>
+            <input type="text" id="title" name="title" required>
+        </label>
 
-                            <label>
-                                <label for="author"> Author:</label>
-                                <input type="text" id="author" name="author" required>
-                            </label>
+        <label>
+            <label for="author"> Author:</label>
+            <input type="text" id="author" name="author" required>
+        </label>
 
-                            <label>
-                                <label for="conference"> Name of the conference (if any):</label>
-                                <input type="text" id="conference" name="conference">
-                            </label>
+        <label>
+            <label for="conference"> Name of the conference (if any):</label>
+            <input type="text" id="conference" name="conference">
+        </label>
 
-                            <label>
-                                <label for="journal"> Name of the journal (if any):</label>
-                                <input type="text" id="journal" name="journal">
-                            </label>
+        <label>
+            <label for="journal"> Name of the journal (if any):</label>
+            <input type="text" id="journal" name="journal">
+        </label>
 
-                            <label>
-                                <label for="date"> Date:</label>
-                                <input type="date" id="date" name="date" required>
-                            </label>
+        <label>
+            <label for="date"> Date:</label>
+            <input type="date" id="date" name="date" required>
+        </label>
 
-                            <label>
-                                <label for="doi"> Link to the paper (DOI):</label>
-                                <input type="text" id="doi" name="doi" required>
-                            </label>
-                        </div>
-                        <button type="submit" id="submitbutton">Submit</button>
-                        <button type="button" id="viewbutton" onclick="opennewtab()">View Previous Responses</button>
-                        <button type="button" id="deletebutton" onclick="opendeletetab()">Delete Paper</button>
-                    </form>
-        </main>
-        <script>
-            function opennewtab() {
-                var newTab = window.open('/usn-form', '_blank');
-            }
-            function opendeletetab() {
-                var deleteTab = window.open('/delete-data', '_blank');
-            }
-        </script>        
-</body>
-
-</html>
+        <label>
+            <label for="doi"> Link to the paper (DOI):</label>
+            <input type="text" id="doi" name="doi" required>
+        </label>
+        <button type="submit" id="submitbutton">Submit</button>
+        <button type="button" id="viewbutton" onclick="opennewtab()">View Previous Responses</button>
+        <button type="button" id="deletebutton" onclick="opendeletetab()">Delete Paper</button>
+    </form>
+    <script>
+        function opennewtab() {
+            var newTab = window.open('/usn-form', '_blank');
+        }
+        function opendeletetab() {
+            var deleteTab = window.open('/delete-data', '_blank');
+        }
+    </script>
+    
+{% endblock %}

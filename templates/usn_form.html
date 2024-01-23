@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles.css">
-    <title>Enter USN</title>
-</head>
+{% block body %}
 
-<body>
-    <h1>Enter the USN:</h1>
-    <form action="/sql-data" method="POST">
-        <input type="text" name="usn" required>
-        <button type="submit">Submit</button>
-    </form>
-</body>
+<h1>Enter the USN:</h1>
+<form action="/sql-data" method="POST">
+    <input type="text" name="usn" required>
+    <button type="submit">Submit</button>
+</form>
 
-</html>
+{% endblock %}
