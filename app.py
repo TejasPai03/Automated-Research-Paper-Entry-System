@@ -72,7 +72,7 @@ def delete_form():
     return render_template('delete_form.html')
 
 # Route to handle data deletion
-@app.route('/submit-paper-id', methods=["GET", "POST"])
+@app.route('/submit-paper-id', methods=['POST'])
 def delete_data():
     # Get the Paper ID from the request
     paper_id = request.form['paperid']
