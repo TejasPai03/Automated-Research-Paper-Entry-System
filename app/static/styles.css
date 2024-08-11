@@ -3,15 +3,6 @@ h1 {
     color: blue;
 }
 
-body {
-    background-color: white;
-}
-
-div {
-    width: 500px;
-    background-color: yellow;
-}
-
 label {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-right: 10px;

@@ -1,19 +1,23 @@
-from flask import Flask, render_template, request
+from flask import render_template, request
+from app import app
 import mysql.connector
 import pandas as pd
+from config import Config
 
-app = Flask(__name__, template_folder='templates')
-# MySQL configuration
+
+# Create a .config file and store details w.r.to the keys
 db_config = {
-    "host": "localhost", 
-    "user": "root",
-    "password": "",     # Enter your mysql server password
-    "database": "phd_papers" # Change the Schema name if needed
+    "host": Config.HOST,        # Set 'localhost' to run local instance
+    "user": Config.USER,
+    "password": Config.PASSWORD,
+    "database": Config.DATABASE 
 }
+
 
 @app.route('/')
 def index():
     return render_template('form.html')
+
 
 @app.route('/submit', methods=['POST'])
 def submit_form():
@@ -26,7 +30,6 @@ def submit_form():
     date = request.form['date']
     doi = request.form['doi']
 
-    # Store the form data in the MySQL database
     try:
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
@@ -42,7 +45,6 @@ def submit_form():
         return "Paper submitted successfully!"
     except mysql.connector.Error as err:
         return f"Error: {err}"
-    
 
 
 @app.route('/usn-form', methods=['GET'])
@@ -65,33 +67,23 @@ def sql_table():
     return render_template('sql-data.html')
 
 
-
-# Route to display the USN form
 @app.route('/delete-data', methods=['GET'])
 def delete_form():
     return render_template('delete_form.html')
 
-# Route to handle data deletion
+
 @app.route('/submit-paper-id', methods=['POST'])
 def delete_data():
-    # Get the Paper ID from the request
     paper_id = request.form['paperid']
         
-    # Connect to the MySQL database
     conn = mysql.connector.connect(**db_config)
     mycursor = conn.cursor()
     
-    # Execute the DELETE query
     sql = "DELETE FROM research_papers WHERE paper_id = %s;"
     mycursor.execute(sql, (paper_id,))
         
-    # Commit the changes and close the connection
     conn.commit()
     mycursor.close()
     conn.close()
-        
-    # Return a success message (you can customize the message as needed)
-    return "Paper deleted successfully!"
 
-if __name__ == '__main__':
-    app.run(port=5500, debug=True)
+    return "Paper deleted successfully!"
